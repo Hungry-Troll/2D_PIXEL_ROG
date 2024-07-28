@@ -28,7 +28,7 @@ public static class Util
             Debug.LogError(message);
     }
 
-    private static Transform FindChild(string name, Transform _tr)
+    public static Transform FindChild(string name, Transform _tr)
     {
         if (_tr.name == name)
         {
@@ -39,23 +39,6 @@ public static class Util
             Transform findTr = FindChild(name, _tr.GetChild(i));
             if (findTr != null)
                 return findTr;
-        }
-        return null;
-    }
-
-    // Transform을 찾는 메서드
-    public static Transform FindChild(this GameObject gameObject, string name)
-    {
-        return FindChild(name, gameObject.transform);
-    }
-
-    // 특정 컴포넌트를 찾는 메서드
-    public static T FindChildComponent<T>(this GameObject gameObject, string name) where T : Component
-    {
-        Transform childTransform = gameObject.FindChild(name);
-        if (childTransform != null)
-        {
-            return childTransform.GetComponent<T>();
         }
         return null;
     }
